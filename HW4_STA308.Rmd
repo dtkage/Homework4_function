@@ -1,0 +1,105 @@
+---
+title: "HW4"
+author: "Darren Kagey"
+date: "2023-04-14"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+BirthdayFunction <- function(num_people=23){ # input of function, num_people, has a default of 23 but can be user specified
+  BirthdaysSample <- sample(c(1:365), size=num_people, replace=TRUE,
+                              prob = c(rep(1/365, 365))) # creates a sample of birthdays, the size of num_people, where each day has equal probability to be each person's birthday
+MatchingBirthdays <- num_people-length(unique(BirthdaysSample))
+# object MatchingBirthdays calculates that number of matching birthdays generated in the sample of birthdays
+# length(unique(BirthdaysSample)) gives the number of uniquely generated birthdays, so subtracting this value from num_people gives you the number of birthdays that aren't uniwue and match with someone else
+MatchingBirthdays
+    }
+
+
+BirthdayFunction()
+```
+
+```{r}
+set.seed(314159)
+BirthdayFunction_10people <- sapply(rep(10,100000), BirthdayFunction)
+# object BirthdayFunction_10people runs the BirthdayFunction(num_people=10) 100,000 times 
+summary(BirthdayFunction_10people)
+# gives summary statistics for BirthdayFunction_10people
+barplot(table(BirthdayFunction_10people)) #produces a bar plot of the distribution of the number of matching birthdays for BirthdayFunction_10people
+```
+
+```{r}
+set.seed(314159)
+BirthdayFunction_20people <- sapply(rep(20,100000), BirthdayFunction)
+#object BirthdayFunction_20people runs the BirthdayFunction(num_people=20) 100,000 times 
+summary(BirthdayFunction_20people) # gives summary statistics for BirthdayFunction_20people
+barplot(table(BirthdayFunction_20people)) #produces a bar plot of the distribution of the number of matching birthdays for BirthdayFunction_20people
+```
+
+```{r}
+set.seed(314159)
+BirthdayFunction_30people <- sapply(rep(30,100000), BirthdayFunction)
+#object BirthdayFunction_30people runs the BirthdayFunction(num_people=30) 100,000 times 
+summary(BirthdayFunction_30people) # gives summary statistics for BirthdayFunction_30people
+barplot(table(BirthdayFunction_30people)) #produces a bar plot of the distribution of the number of matching birthdays for BirthdayFunction_30people
+```
+
+```{r}
+set.seed(314159)
+BirthdayFunction_40people <- sapply(rep(40,100000), BirthdayFunction)
+#object BirthdayFunction_40people runs the BirthdayFunction(num_people=40) 100,000 times 
+summary(BirthdayFunction_40people) # gives summary statistics for BirthdayFunction_40people
+barplot(table(BirthdayFunction_40people)) #produces a bar plot of the distribution of the number of matching birthdays for BirthdayFunction_40people
+```
+
+```{r}
+set.seed(314159)
+BirthdayFunction_50people <- sapply(rep(50,100000), BirthdayFunction)
+#object BirthdayFunction_50people runs the BirthdayFunction(num_people=50) 100,000 times 
+summary(BirthdayFunction_50people) # gives summary statistics for BirthdayFunction_50people
+barplot(table(BirthdayFunction_50people)) #produces a bar plot of the distribution of the number of matching birthdays for BirthdayFunction_50people
+```
+
+```{r}
+set.seed(314159)
+BirthdayFunction_60people <- sapply(rep(60,100000), BirthdayFunction)
+#object BirthdayFunction_60people runs the BirthdayFunction(num_people=60) 100,000 times 
+summary(BirthdayFunction_60people) # gives summary statistics for BirthdayFunction_60people
+barplot(table(BirthdayFunction_60people)) #produces a bar plot of the distribution of the number of matching birthdays for BirthdayFunction_60people
+```
+
+```{r}
+set.seed(314159)
+BirthdayFunction_70people <- sapply(rep(70,100000), BirthdayFunction)
+#object BirthdayFunction_70people runs the BirthdayFunction(num_people=70) 100,000 times 
+summary(BirthdayFunction_70people) # gives summary statistics for BirthdayFunction_70people
+barplot(table(BirthdayFunction_70people)) #produces a bar plot of the distribution of the number of matching birthdays for BirthdayFunction_70people
+```
+
+```{r}
+set.seed(314159)
+BirthdayFunction_80people <- sapply(rep(80,100000), BirthdayFunction)
+#object BirthdayFunction_80people runs the BirthdayFunction(num_people=80) 100,000 times 
+summary(BirthdayFunction_80people) # gives summary statistics for BirthdayFunction_80people
+barplot(table(BirthdayFunction_80people)) #produces a bar plot of the distribution of the number of matching birthdays for BirthdayFunction_80people
+```
+
+```{r}
+set.seed(314159)
+BirthdayFunction_90people <- sapply(rep(90,100000), BirthdayFunction)
+#object BirthdayFunction_90people runs the BirthdayFunction(num_people=90) 100,000 times 
+summary(BirthdayFunction_90people) # gives summary statistics for BirthdayFunction_90people
+barplot(table(BirthdayFunction_90people)) #produces a bar plot of the distribution of the number of matching birthdays for BirthdayFunction_90people
+```
+
+```{r}
+set.seed(314159)
+BirthdayFunction_100people <- sapply(rep(100,100000), BirthdayFunction)
+#object BirthdayFunction_100people runs the BirthdayFunction(num_people=100) 100,000 times 
+summary(BirthdayFunction_100people) # gives summary statistics for BirthdayFunction_100people
+barplot(table(BirthdayFunction_100people)) #produces a bar plot of the distribution of the number of matching birthdays for BirthdayFunction_100people
+```
+
+## Discussion
+As the number of people increases, the distribution becomes more symmetrical, the spread becomes bigger, and the mean and median increase. When there was just 10 people, the number of matches ranged from 0 to 3 and was right-skewed, with 0 being by far the most common, the mean was .121, and the median was 0. When the sample was raised to 20 people, the range was still right skewed but widened to between 0 and 5 matches , the most common number of matches was 1, the mean was up to .5182, but the median was still 0. This pattern keeps occuring, as when the number of people was 50, the range of matches went from 0 to 12, though still right skewed, the most common number of matches was up to 3, the mean went up to3.221 and the median went up to 3. By the time we raise the number of people to 80, the range is basically normally distributed and goes from 0 to 21 matches, with 8 matches being most common, the mean is 8.071 and the median is 8. The final, and biggest, sample size, 100 people solidifies the pattern. With 100 people, the dsitribution is clearly normal with a bell curve shape with a minimum of 2 and maximum of 26. The most common number of matches was up to 12, the mean was up to 12.43, and the median was also up to 12. Now this pattern of how the distribution widened in range, increased in mean and median, and went from right skewed to normally distributed as the number of people went up makes sense because it follows the central limit theorem. CLT says that as n grows, the sample mean begins to act as a normal random variable and thus the distribution will be normal and bell shaped. Here, as n (the number of people) grew, the mean value began to act more like a normal random variable, being at the center of the distributions, causing said the number of matching birthdays to become normally distributed and bell curve shaped.
